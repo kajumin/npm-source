@@ -19,6 +19,11 @@ const routes = [
     path: '/clipboard',
     name: 'Clipboard',
     component: () => import(/* webpackChunkName: "clipboard" */ '@/views/clipboard/Clipboard.vue')
+  },
+  {
+    path: '/axios',
+    name: 'Axios',
+    component: () => import(/* webpackChunkName: "axios" */ '@/views/axios/Axios.vue')
   }
   // {
   //   path: '/about',
