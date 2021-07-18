@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Layout from '@/components/layout/Layout.vue'
 
 Vue.use(VueRouter)
-console.log('vue-router')
 const routes = [
   {
     path: '/',
@@ -13,7 +13,14 @@ const routes = [
   {
     path: '/count-to',
     name: 'CountTo',
-    component: () => import(/* webpackChunkName: "count-to" */ '@/views/count-to/CountTo.vue')
+    component: Layout,
+    children: [
+      {
+        path: 'list',
+        name: 'CountToList',
+        component: () => import(/* webpackChunkName: "count-to" */ '@/views/count-to/CountTo.vue')
+      }
+    ]
   },
   {
     path: '/clipboard',
@@ -24,6 +31,16 @@ const routes = [
     path: '/axios',
     name: 'Axios',
     component: () => import(/* webpackChunkName: "axios" */ '@/views/axios/Axios.vue')
+  },
+  {
+    path: '/qs',
+    name: 'Qs',
+    component: () => import(/* webpackChunkName: "qs" */ '@/views/axios/Qs.vue')
+  },
+  {
+    path: '/md5',
+    name: 'Md5',
+    component: () => import(/* webpackChunkName: "md5" */ '@/views/md5/Md5.vue')
   }
   // {
   //   path: '/about',

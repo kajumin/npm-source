@@ -1,8 +1,12 @@
 <template>
   <div>
-    <div>axios插件</div>
+    <div class="axios">axios插件</div>
     <div><el-button @click="handleClick2">设置name</el-button></div>
     <div><el-button @click="handleClick">请求用户列表</el-button></div>
+    <!--
+      拦截器中设置默认参数
+      config.params = Object.assign({}, { name: 'bang' }, config.params)
+     -->
   </div>
 </template>
 <script>
@@ -23,4 +27,8 @@ export default {
   }
 }
 </script>
-<style scoped></style>
+<style scoped>
+.axios {
+  color: #096;
+}
+</style>
