@@ -1,11 +1,12 @@
 <template>
   <div>
     <div>md5</div>
+    <div>{{md5String}}</div>
   </div>
 </template>
 
 <script>
-import md5 from 'js-md5'
+import { getMd5 } from '@/api/getMsg.js'
 export default {
   data() {
     return {
@@ -14,9 +15,7 @@ export default {
   },
   created() {
     const t = Date.now()
-    const hash = md5.create()
-    hash.update('bang' + t)
-    this.md5String = hash.hex()
+    this.md5String = getMd5('bang' + t)
   }
 }
 </script>
