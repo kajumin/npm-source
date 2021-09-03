@@ -13,16 +13,36 @@ const service = axios.create({
   // params: { name: localStorage.getItem('name') } // 初始化时没有值, 就不会有值
   // params: { name: 'bang' } // 有效
 })
-
+const tokenObj = {} // 声明一个对象用于存储每个请求的axios标识和取消函数
+const CancelToken = axios.CancelToken
+function removePending(sign) {
+  console.log('删除上一次请求', tokenObj)
+  if (tokenObj[sign]) {
+    tokenObj[sign]()
+    delete tokenObj[sign]
+  }
+}
+console.log(CancelToken, typeof removePending)
 service.interceptors.request.use(
   (config) => {
     // 这里定义一些config配置
     // console.log(config)
     // loading + 1
     // store.dispatch('SetLoading', true)
+
+    // 固定添加一些参数
     console.log(config)
     config.params = Object.assign({}, { name: 'bang' }, config.params)
     console.log(config)
+    // 处理可以取消请求的情况
+    if (config.canCancel) {
+      removePending(config.url + '&' + config.method) // 在一个axios发送前执行一下取消操作
+      config.cancelToken = new CancelToken((c) => {
+        // 这里的axios标识我是用请求地址&请求方式拼接的字符串，当然你可以选择其他的一些方式
+        tokenObj[config.url + '&' + config.method] = c
+      })
+      console.log(tokenObj)
+    }
     return config
   },
   (error) => {
@@ -38,6 +58,11 @@ service.interceptors.request.use(
 )
 service.interceptors.response.use(
   (response) => {
+    console.log(response)
+    // 请求回来了主动删除请求请求标识和函数
+    if (response.config.canCancel) {
+      removePending(config.url + '&' + config.method)
+    }
     // 这里定义一些config配置
     const res = response.data
     // token失效, 未登陆, 跳转到登陆页面
@@ -64,9 +89,9 @@ service.interceptors.response.use(
       }
     }
     if (res.code === 10011 || res.code === 10005) {
+      console.log(typeof getRedirectUrl)
       // 清除token
       localStorage.removeItem('access_token')
-      // console.log(typeof getRedirectUrl)
       location.href = getRedirectUrl()
     } else {
       Message.closeAll()

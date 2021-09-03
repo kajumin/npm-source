@@ -13,7 +13,7 @@
     "axios": "^0.21.1",
     "clipboard": "^2.0.8",
     "core-js": "^3.6.5",
-    "element-ui": "^2.15.3",
+    "element-ui": "^2.3.6",
     "highlight.js": "^11.1.0",
     "jquery": "^3.6.0",
     "js-md5": "^0.7.3",
@@ -44,6 +44,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-element-ui": "~1.1.4",
     "vue-template-compiler": "^2.6.11"
   }
 }

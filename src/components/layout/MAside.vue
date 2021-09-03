@@ -41,42 +41,7 @@
           <i class="el-icon-document"></i>
           <span slot="title">导航三</span>
         </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item> -->
+        -->
       </el-menu>
     </el-scrollbar>
   </el-aside>
@@ -84,24 +49,27 @@
 
 <script>
 import variables from '@/styles/variables.scss'
+import { mapGetters } from 'vuex'
+import SidebarItem from '@/components/layout/components/SidebarItem.vue'
 export default {
-  methods: {
-    handleOpen() {},
-    handleClose() {}
+  components: {
+    SidebarItem
   },
   computed: {
+    ...mapGetters(['permission_routes']),
     variables() {
       return variables
     }
+  },
+  methods: {
+    handleOpen() {},
+    handleClose() {}
   }
 }
 </script>
 
 <style scoped lang="scss">
 .el-aside /deep/ {
-  position: fixed;
-  top: 0;
-  bottom: 0;
   .el-scrollbar {
     height: 100%;
     .el-scrollbar__wrap {
