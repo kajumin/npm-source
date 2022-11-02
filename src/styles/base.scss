@@ -1,3 +1,6 @@
-body {
-  margin: 0;
+.box-shadow-bottom {
+  box-shadow: 0 2px 3px -3px rgba(0, 0, 0, 0.2);
+}
+.el-main > div {
+  background-color: #fff;
 }

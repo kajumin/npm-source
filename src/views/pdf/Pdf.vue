@@ -22,17 +22,18 @@ export default {
   },
   methods: {
     getNumPages(url) {
-      var loadingTask = pdf.createLoadingTask(url)
+      const loadingTask = pdf.createLoadingTask(url)
       console.log(loadingTask)
-      console.log(Object.prototype.toString.call(loadingTask))
-      loadingTask.promise
-        .then((pdf) => {
-          this.url = loadingTask
-          this.numPages = pdf.numPages
-        })
-        .catch((err) => {
-          console.log(err, 'pdf加载失败')
-        })
+      // console.log(Object.prototype.toString.call(loadingTask))
+      // loadingTask.promise
+      //   .then((pdf) => {
+      //     console.log('加载成功', pdf)
+      //     this.url = loadingTask
+      //     this.numPages = pdf.numPages
+      //   })
+      //   .catch((err) => {
+      //     console.log(err, 'pdf加载失败')
+      //   })
     }
   }
 }

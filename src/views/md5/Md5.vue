@@ -1,7 +1,8 @@
 <template>
   <div>
     <div>md5</div>
-    <div>{{md5String}}</div>
+    <div>生成md5加密: {{md5String}}</div>
+    <div>位数:{{md5String.length}}</div>
   </div>
 </template>
 

@@ -22,7 +22,7 @@ function removePending(sign) {
     delete tokenObj[sign]
   }
 }
-console.log(CancelToken, typeof removePending)
+// console.log(CancelToken, typeof removePending)
 service.interceptors.request.use(
   (config) => {
     // 这里定义一些config配置

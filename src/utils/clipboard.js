@@ -7,11 +7,15 @@ export const handleClipboard = function (text, event) {
   })
   clipboard.on('success', () => {
     Message.success('复制成功！')
+    clipboard.off('error')
+    clipboard.off('success')
     clipboard.destroy()
   })
   clipboard.on('error', () => {
     Message.error('复制失败，请重新尝试！')
     clipboard.destroy()
+    clipboard.off('error')
+    clipboard.off('success')
   })
-  clipboard.onClick(event)
+  // clipboard.onClick(event)
 }

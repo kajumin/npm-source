@@ -2,12 +2,10 @@
   <div :class="$style.qs">
     <div :class="$style.title">qs</div>
     <div :class="$style.content">
-      <p :class="$style.text">
-        qs: 有以下几个格式{ arrayFormat: 'indices' }(默认) brackets repeat
-      </p>
+      <div>:class=$style.content</div>
     </div>
     <div :class="$style.content2">
-      <p :class="$style.text">qs: 有以下几个格式{ arrayFormat: 'indices' }(默认) brackets repeat</p>
+      <p :class="$style.text">qs: 有以下几个格式{ arrayFormat: 'indices' } (默认, php支持的格式) brackets repeat</p>
     </div>
   </div>
 </template>
@@ -23,16 +21,29 @@ export default {
     }
   },
   created() {
+    console.log('默认格式')
+    console.log(
+      decodeURI(Qs.stringify({ a: this.a }))
+    )
+    console.log('indices格式')
     console.log(
       decodeURI(Qs.stringify({ a: this.a }, { arrayFormat: 'indices' }))
-    ) // 默认格式
+    )
+    console.log('brackets格式')
     console.log(
       decodeURI(Qs.stringify({ a: this.a }, { arrayFormat: 'brackets' }))
     )
+    console.log('repeat格式')
     console.log(Qs.stringify({ a: this.a }, { arrayFormat: 'repeat' }))
     // php需要的格式
     console.log(
       decodeURI(Qs.stringify({ sort: this.sort }, { arrayFormat: 'indices' }))
+    ) // 默认格式
+    console.log(
+      decodeURI(Qs.stringify({ sort: this.sort }, { arrayFormat: 'brackets' }))
+    ) // 默认格式
+    console.log(
+      decodeURI(Qs.stringify({ sort: this.sort }, { arrayFormat: 'repeat' }))
     ) // 默认格式
 
     var params = Qs.stringify({ sort: this.sort }, { arrayFormat: 'indices' })

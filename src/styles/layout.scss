@@ -1,11 +1,22 @@
-.el-header {
-  margin-left: -1px;
-  // background-color: rgb(48, 65, 86);
-}
-.el-container.is-vertical {
-  position: relative;
-  left: -1px;
-}
-#app{
+body, #app, h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0 }
+html, body, #app, #app > .el-container { height: 100%; }
+body {
+  font-size: 14px;
+  line-height: 1.2;
   background-color: #eee;
+}
+.el-header {
+  background-color: #fff;
+}
+.el-aside {
+  .el-scrollbar {
+    height: 100%;
+    background-color: #304156;
+    .el-scrollbar__wrap {
+      overflow-x: hidden;
+    }
+  }
+  .el-menu {
+    border: none;
+  }
 }
